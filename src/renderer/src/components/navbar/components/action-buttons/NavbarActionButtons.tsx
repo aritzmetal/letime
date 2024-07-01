@@ -1,7 +1,7 @@
 import "./styles/navbarActionButtons.css";
 import minimize from "../../../../assets/icons/Minimize.svg";
 import maximize from "../../../../assets/icons/Maximize.svg";
-import close from "../../../../assets/icons/Close.svg";
+import close from '../../../../assets/icons/Close.svg'
 
 const BASE_CLASSNAME = "lt-action-buttons";
 
@@ -11,7 +11,7 @@ const BUTTONS = [
     icon: minimize,
     enabled: true,
     action: () => {
-      (window as any).app.minimize();
+      (window as any).api.minimize();
     },
   },
   {
@@ -19,7 +19,7 @@ const BUTTONS = [
     icon: maximize,
     enabled: true,
     action: () => {
-        (window as any).app.maximize();
+        (window as any).api.maximize();
       },
   },
   {
@@ -27,7 +27,7 @@ const BUTTONS = [
     icon: close,
     enabled: true,
     action: () => {
-      (window as any).app.close();
+      (window as any).api.close();
     },
   },
 ];

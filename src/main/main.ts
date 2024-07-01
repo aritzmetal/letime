@@ -1,6 +1,9 @@
 import { app, BrowserWindow, ipcMain } from "electron";
+import { fileURLToPath } from "node:url";
 
 
+
+//const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 import path from "path";
 
@@ -36,18 +39,20 @@ function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: true,
-      devTools: true,
+      //devTools: true,
       preload: path.join(__dirname, "../preload/preload.js")
     }
 
 
   });
 
+  mainWindow.loadFile('../../dist/renderer/index.html')
+
   // Vite dev server URL
   mainWindow.loadURL("http://localhost:5173");
   mainWindow.on("closed", () => (mainWindow = null));
   
-  mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
   //Espera a que cargue del todo para abrir
   mainWindow.on("ready-to-show", () => {
     mainWindow?.show()
@@ -70,6 +75,9 @@ ipcMain.on("app/maximize", () => {
   }
 })
   
+
+
+
 }
 
 app.whenReady().then(() => {
